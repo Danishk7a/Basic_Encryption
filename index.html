@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption</title>
+</head>
+<body>
+
+
+    <div id="display"></div>
+    <input type="text" name="" onchange="handleChange()" id="box">
+ <div>
+    <button onclick="encrypt()">Encrypt</button>
+    <button onclick="decrypt()">Decrypt</button>
+ </div>
+    
+</body>
+
+<style>
+
+
+#display{
+    font-size: 23px;
+    height: 20vh;
+    width:200px;
+    border: 0.5px solid grey;
+    background-color: #f2f2f2;
+
+}
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+
+        font-size: 18px;
+        gap: 20px;
+    }
+
+    input{
+        width: 200px;
+        height: 40px;
+        font-size: 18px;
+
+
+    }
+
+    button{
+
+        padding: 20px;
+        font-size: 16px;
+        background-color: cadetblue;
+        color: white;
+        border: none;
+        /* border-radius: 23px; */
+        cursor: pointer;
+
+    }
+
+
+</style>
+
+<script>
+    
+const handleChange = ()=>{
+    let data = document.getElementById('box').value;
+     document.getElementById('display').innerText = data;
+
+}
+
+
+const encrypt = (data) => {
+    data = document.getElementById('box').value;
+
+    let encryptedString = '';
+    for (let i = 0; i < data.length; i++) {
+        encryptedString += String.fromCharCode(data.charCodeAt(i) + 1);
+    }
+    document.getElementById('display').innerText = encryptedString;
+}
+
+
+
+
+
+const decrypt = (data)=>{
+    data = document.getElementById('display').innerText;
+const DecryptedString = [];
+for(let i =0; i <data.length; i++){
+DecryptedString.push(String.fromCharCode(data.charCodeAt(i) - 1));
+}
+
+document.getElementById('display').innerText = DecryptedString.join("");
+
+
+}
+</script>
+</html>
